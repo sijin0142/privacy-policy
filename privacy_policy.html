@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 — 보드게임 기록지</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Nanum+Gothic:wght@400;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --green-50: #f0faf0;
+  --green-100: #d8f0d8;
+  --green-200: #b2deb2;
+  --green-500: #4caf50;
+  --green-700: #2e7d32;
+  --green-900: #1b5e20;
+  --ink: #1a2e1a;
+  --ink-light: #3d5a3e;
+  --muted: #6b7f6c;
+  --border: #c8dfc8;
+  --bg: #f7fbf7;
+  --card: #ffffff;
+  --accent: #66bb6a;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'Nanum Gothic', sans-serif;
+  background: var(--bg);
+  color: var(--ink);
+  line-height: 1.8;
+  min-height: 100vh;
+}
+
+/* ── HEADER ── */
+.hero {
+  background: linear-gradient(160deg, #1b5e20 0%, #2e7d32 45%, #388e3c 100%);
+  padding: 56px 24px 48px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 60% 40% at 20% 30%, rgba(255,255,255,0.06) 0%, transparent 70%),
+    radial-gradient(ellipse 40% 60% at 80% 70%, rgba(102,187,106,0.12) 0%, transparent 70%);
+  pointer-events: none;
+}
+.hero-icon {
+  font-size: 48px;
+  display: block;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 4px 12px rgba(0,0,0,0.3));
+  animation: floatIcon 3s ease-in-out infinite alternate;
+}
+@keyframes floatIcon {
+  from { transform: translateY(0); }
+  to   { transform: translateY(-6px); }
+}
+.hero h1 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: clamp(22px, 5vw, 34px);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 1px;
+  margin-bottom: 10px;
+  position: relative;
+}
+.hero-app-name {
+  display: inline-block;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 20px;
+  padding: 4px 16px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.85);
+  letter-spacing: 2px;
+  margin-bottom: 14px;
+  font-weight: 700;
+}
+.hero-date {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 1px;
+}
+
+/* ── LAYOUT ── */
+.container {
+  max-width: 780px;
+  margin: 0 auto;
+  padding: 40px 20px 80px;
+}
+
+/* ── NOTICE BOX ── */
+.notice-box {
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 2px solid var(--green-200);
+  border-left: 5px solid var(--accent);
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 36px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+}
+.notice-box .notice-icon {
+  font-size: 28px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.notice-box p {
+  font-size: 14px;
+  color: var(--ink-light);
+  line-height: 1.75;
+}
+.notice-box strong {
+  color: var(--green-700);
+  font-weight: 800;
+}
+
+/* ── SECTION ── */
+.section {
+  background: var(--card);
+  border-radius: 18px;
+  border: 1.5px solid var(--border);
+  margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(76,175,80,0.07);
+  transition: box-shadow 0.2s;
+}
+.section:hover {
+  box-shadow: 0 4px 24px rgba(76,175,80,0.13);
+}
+.section-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 22px;
+  background: linear-gradient(135deg, #f4fbf4, #edf7ed);
+  border-bottom: 1.5px solid var(--border);
+}
+.section-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--accent), var(--green-700));
+  color: #fff;
+  font-size: 12px;
+  font-weight: 800;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.section-header h2 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--green-700);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-body {
+  padding: 20px 22px;
+}
+.section-body p {
+  font-size: 14px;
+  color: var(--ink-light);
+  margin-bottom: 10px;
+  line-height: 1.8;
+}
+.section-body p:last-child { margin-bottom: 0; }
+
+/* ── TABLE ── */
+.info-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 10px 0;
+  font-size: 13px;
+}
+.info-table th {
+  background: var(--green-50);
+  color: var(--green-700);
+  font-weight: 800;
+  padding: 10px 14px;
+  text-align: left;
+  border: 1px solid var(--border);
+}
+.info-table td {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  color: var(--ink-light);
+  vertical-align: top;
+}
+.info-table tr:nth-child(even) td {
+  background: #fafff9;
+}
+
+/* ── HIGHLIGHT CHIP ── */
+.chip-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  background: var(--green-50);
+  border: 1.5px solid var(--green-200);
+  border-radius: 20px;
+  padding: 5px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--green-700);
+}
+
+/* ── BIG BADGE ── */
+.big-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  background: linear-gradient(135deg, #e8f5e9, #f1f8e9);
+  border: 2px solid var(--green-200);
+  border-radius: 14px;
+  padding: 18px;
+  margin: 14px 0;
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--green-700);
+  text-align: center;
+}
+
+/* ── ADMOB NOTE ── */
+.admob-card {
+  background: #fffde7;
+  border: 1.5px solid #ffe082;
+  border-left: 4px solid #ffca28;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #5d4037;
+  line-height: 1.75;
+}
+.admob-card strong {
+  color: #e65100;
+}
+.admob-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: #1565c0;
+  font-size: 12px;
+  word-break: break-all;
+  text-decoration: none;
+}
+.admob-link:hover { text-decoration: underline; }
+
+/* ── CONTACT ── */
+.contact-box {
+  background: linear-gradient(135deg, #1b5e20, #2e7d32);
+  border-radius: 16px;
+  padding: 26px 24px;
+  margin-top: 32px;
+  text-align: center;
+  color: #fff;
+}
+.contact-box h3 {
+  font-family: 'Noto Serif KR', serif;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.contact-box p {
+  font-size: 13px;
+  color: rgba(255,255,255,0.8);
+  line-height: 1.75;
+}
+.contact-box a {
+  color: #a5d6a7;
+  font-weight: 700;
+  text-decoration: none;
+}
+.contact-box a:hover { text-decoration: underline; }
+
+/* ── FOOTER ── */
+footer {
+  text-align: center;
+  padding: 28px 20px;
+  font-size: 11px;
+  color: var(--muted);
+  border-top: 1px solid var(--border);
+  margin-top: 40px;
+}
+
+@media (max-width: 480px) {
+  .hero { padding: 44px 16px 36px; }
+  .section-body { padding: 16px; }
+  .section-header { padding: 14px 16px; }
+  .notice-box { padding: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <span class="hero-icon">🛡️</span>
+  <div class="hero-app-name">보드게임 기록지</div>
+  <h1>개인정보처리방침</h1>
+  <div class="hero-date">시행일: 2026년 4월 10일 &nbsp;|&nbsp; 최종 수정: 2026년 4월 10일</div>
+</div>
+
+<div class="container">
+
+  <!-- 핵심 요약 -->
+  <div class="notice-box">
+    <span class="notice-icon">✅</span>
+    <p>
+      <strong>한 줄 요약:</strong> 본 앱은 사용자의 개인정보를 <strong>일체 수집하지 않습니다.</strong><br>
+      회원가입, 로그인, 이름·연락처·위치 등 어떠한 개인 식별 정보도 요구하거나 저장하지 않습니다.
+      모든 게임 데이터는 사용자의 기기 안에만 보관됩니다.
+    </p>
+  </div>
+
+  <!-- 1. 개인정보 미수집 원칙 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">1</div>
+      <h2>🚫 개인정보 수집 · 이용 없음</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        <strong>보드게임 기록지</strong>는 서비스 제공 목적상 개인정보 수집이 전혀 필요하지 않으며,
+        사용자로부터 어떠한 개인정보도 수집하지 않습니다.
+      </p>
+      <div class="big-badge">
+        🙅 수집하는 개인정보: <span style="color:#e53935;margin-left:6px;">없음 (Zero)</span>
+      </div>
+      <p>아래 항목들은 본 앱이 <strong>요청하거나 저장하지 않는</strong> 정보입니다:</p>
+      <div class="chip-row">
+        <span class="chip">❌ 이름</span>
+        <span class="chip">❌ 이메일</span>
+        <span class="chip">❌ 전화번호</span>
+        <span class="chip">❌ 주소</span>
+        <span class="chip">❌ 생년월일</span>
+        <span class="chip">❌ 위치정보</span>
+        <span class="chip">❌ 기기 식별자</span>
+        <span class="chip">❌ 계정 정보</span>
+        <span class="chip">❌ 결제 정보</span>
+        <span class="chip">❌ 연락처 목록</span>
+        <span class="chip">❌ 카메라/마이크</span>
+        <span class="chip">❌ 사진/파일</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. 앱 내 데이터 처리 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">2</div>
+      <h2>📱 앱 내 데이터 처리 방식</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        사용자가 앱 내에서 입력하는 게임 이름, 플레이어 이름, 점수, 게임 기록 등의 데이터는
+        오직 <strong>사용자 기기의 로컬 저장소(localStorage)</strong>에만 저장됩니다.
+      </p>
+      <table class="info-table">
+        <thead>
+          <tr>
+            <th>데이터 종류</th>
+            <th>저장 위치</th>
+            <th>외부 전송</th>
+            <th>비고</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>게임 이름</td>
+            <td>기기 내부 (localStorage)</td>
+            <td>❌ 없음</td>
+            <td>앱 삭제 시 자동 삭제</td>
+          </tr>
+          <tr>
+            <td>플레이어 이름</td>
+            <td>기기 내부 (localStorage)</td>
+            <td>❌ 없음</td>
+            <td>앱 삭제 시 자동 삭제</td>
+          </tr>
+          <tr>
+            <td>점수 / 기록</td>
+            <td>기기 내부 (localStorage)</td>
+            <td>❌ 없음</td>
+            <td>앱 삭제 시 자동 삭제</td>
+          </tr>
+          <tr>
+            <td>게임 히스토리</td>
+            <td>기기 내부 (localStorage)</td>
+            <td>❌ 없음</td>
+            <td>앱 내 직접 삭제 가능</td>
+          </tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;">
+        위 데이터는 인터넷을 통해 외부 서버로 전송되거나 제3자와 공유되지 않습니다.
+        개발자를 포함한 그 누구도 사용자의 기기에 저장된 데이터에 접근할 수 없습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 3. 요청 권한 없음 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">3</div>
+      <h2>🔒 앱 권한 요청 없음</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        본 앱은 Android 시스템 권한을 요청하지 않습니다.
+        카메라, 마이크, 위치, 연락처, 저장소 등의 민감한 권한이 필요하지 않습니다.
+      </p>
+      <table class="info-table">
+        <thead>
+          <tr><th>권한 항목</th><th>요청 여부</th><th>사유</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>위치 정보</td><td>❌ 미요청</td><td>사용하지 않음</td></tr>
+          <tr><td>카메라</td><td>❌ 미요청</td><td>사용하지 않음</td></tr>
+          <tr><td>마이크</td><td>❌ 미요청</td><td>사용하지 않음</td></tr>
+          <tr><td>연락처</td><td>❌ 미요청</td><td>사용하지 않음</td></tr>
+          <tr><td>저장소 읽기/쓰기</td><td>❌ 미요청</td><td>내부 저장소만 사용</td></tr>
+          <tr><td>전화 / SMS</td><td>❌ 미요청</td><td>사용하지 않음</td></tr>
+          <tr><td>인터넷 (INTERNET)</td><td>✅ 요청</td><td>광고 표시 목적에만 사용</td></tr>
+        </tbody>
+      </table>
+      <p style="margin-top:12px;">
+        인터넷 권한은 Google AdMob 광고 SDK가 광고를 불러오기 위해 사용되며,
+        사용자 개인정보 수집 목적으로 사용되지 않습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 4. 광고 (AdMob) -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">4</div>
+      <h2>📢 광고 서비스 (Google AdMob)</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        본 앱은 Google AdMob을 통해 배너 광고를 표시합니다.
+        광고 SDK는 Google이 독립적으로 운영하며, 개발자는 광고 SDK가 수집하는 데이터에
+        접근하거나 이를 제어하지 않습니다.
+      </p>
+      <div class="admob-card">
+        <strong>⚠️ Google AdMob 안내:</strong><br>
+        Google AdMob은 광고 제공 및 최적화를 위해 광고 ID(GAID), 기기 정보,
+        앱 사용 패턴 등을 수집할 수 있습니다. 이는 Google의 개인정보처리방침에 따라 처리되며,
+        본 앱 개발자의 개인정보 수집과는 무관합니다.<br><br>
+        사용자는 기기 설정에서 광고 ID 재설정 또는 맞춤 광고를 거부할 수 있습니다.<br>
+        (<strong>설정 → Google → 광고</strong>)
+        <br>
+        <a class="admob-link" href="https://policies.google.com/privacy" target="_blank">
+          🔗 Google 개인정보처리방침 바로가기 →
+        </a>
+      </div>
+      <p style="margin-top:12px;">
+        광고는 앱 설정 화면 및 게임 결과 화면 하단에 표시되며,
+        사용자의 게임 데이터나 개인정보와 연동되지 않습니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 5. 제3자 제공 없음 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">5</div>
+      <h2>🤝 제3자 제공 · 위탁 없음</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        본 앱은 수집하는 개인정보가 없으므로, 제3자에게 제공하거나 처리를 위탁하는
+        개인정보 역시 존재하지 않습니다.
+      </p>
+      <div class="big-badge">
+        🙅 제3자 개인정보 제공 · 위탁: <span style="color:#e53935;margin-left:6px;">해당 없음</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- 6. 아동 개인정보 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">6</div>
+      <h2>👶 아동 개인정보 보호</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        본 앱은 만 14세 미만 아동을 포함한 모든 연령대를 대상으로 하는 보드게임 점수 기록 앱입니다.
+        개인정보를 수집하지 않으므로 아동의 개인정보가 수집·처리될 위험이 없습니다.
+      </p>
+      <p>
+        보호자께서 자녀의 기기 사용에 관한 문의 사항이 있으시면 아래 연락처로 문의하시기 바랍니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 7. 개인정보 보관 및 파기 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">7</div>
+      <h2>🗑️ 데이터 보관 및 삭제</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        앱 내에서 입력한 게임 기록은 사용자가 직접 삭제하거나 앱을 삭제하면 즉시 제거됩니다.
+        개발자 서버에는 어떠한 데이터도 저장되지 않으므로, 별도의 데이터 삭제 요청 절차가 필요하지 않습니다.
+      </p>
+      <table class="info-table">
+        <thead>
+          <tr><th>삭제 방법</th><th>결과</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>앱 내 히스토리 삭제 버튼</td><td>선택한 기록 즉시 삭제</td></tr>
+          <tr><td>앱 내 전체 삭제</td><td>모든 게임 기록 즉시 삭제</td></tr>
+          <tr><td>앱 삭제 (언인스톨)</td><td>모든 데이터 완전 삭제</td></tr>
+          <tr><td>기기 초기화</td><td>모든 데이터 완전 삭제</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 8. 방침 변경 -->
+  <div class="section">
+    <div class="section-header">
+      <div class="section-num">8</div>
+      <h2>📋 개인정보처리방침 변경</h2>
+    </div>
+    <div class="section-body">
+      <p>
+        본 개인정보처리방침은 법령·정책 변경 또는 서비스 변경에 따라 개정될 수 있습니다.
+        변경 시 앱 업데이트 노트 또는 본 페이지를 통해 고지하며,
+        변경된 방침은 고지 후 7일 이후부터 효력이 발생합니다.
+      </p>
+      <p>
+        중요한 변경 (개인정보 수집 항목 추가 등)의 경우 30일 전 사전 고지합니다.
+      </p>
+    </div>
+  </div>
+
+  <!-- 연락처 -->
+  <div class="contact-box">
+    <h3>📬 개인정보 관련 문의</h3>
+    <p>
+      개인정보처리방침에 관한 문의 또는 불만이 있으신 경우 아래로 연락해 주세요.<br><br>
+      개발자: <strong>보드게임 기록지 개발팀</strong><br>
+      이메일: <a href="mailto:sijin01421@gmail.com">sijin01421@gmail.com</a><br><br>
+      문의 접수 시 확인 후 답변 드리겠습니다.
+    </p>
+  </div>
+
+</div>
+
+<footer>
+  © 2026 보드게임 기록지. 본 방침은 대한민국 개인정보 보호법을 준수합니다.<br>
+  「개인정보 보호법」 제30조에 따라 작성된 개인정보처리방침입니다.
+</footer>
+
+</body>
+</html>
