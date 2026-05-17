@@ -1,395 +1,682 @@
 <!DOCTYPE html>
 <html lang="ko">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>개인정보처리방침 — 내 친구, 베타❤</title>
-    <style>
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body {
-            font-family: 'Apple SD Gothic Neo', 'Malgun Gothic', 'Noto Sans KR', sans-serif;
-            background: #f4f8f8;
-            color: #333;
-            line-height: 1.8;
-            padding: 0 16px 60px;
-        }
-        header {
-            background: linear-gradient(135deg, #5AADAD, #2d8888);
-            color: #fff;
-            padding: 40px 24px 32px;
-            text-align: center;
-            margin: 0 -16px 32px;
-        }
-        header h1 { font-size: 1.6rem; margin-bottom: 6px; }
-        header p  { font-size: 0.88rem; opacity: 0.85; }
-        .container { max-width: 760px; margin: 0 auto; }
-        section {
-            background: #fff;
-            border-radius: 16px;
-            padding: 24px 28px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.06);
-        }
-        h2 {
-            font-size: 1.05rem;
-            color: #2d8888;
-            border-left: 4px solid #5AADAD;
-            padding-left: 12px;
-            margin-bottom: 14px;
-        }
-        h3 {
-            font-size: 0.95rem;
-            color: #444;
-            margin: 16px 0 6px;
-            font-weight: 600;
-        }
-        p  { margin-bottom: 10px; font-size: 0.93rem; }
-        ul { padding-left: 20px; margin-bottom: 10px; }
-        li { font-size: 0.93rem; margin-bottom: 4px; }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            font-size: 0.88rem;
-            margin-top: 10px;
-        }
-        th {
-            background: #e8f5f5;
-            color: #2d8888;
-            padding: 10px 12px;
-            text-align: left;
-            border-bottom: 2px solid #b2dfdf;
-        }
-        td {
-            padding: 10px 12px;
-            border-bottom: 1px solid #e8e8e8;
-            vertical-align: top;
-        }
-        tr:last-child td { border-bottom: none; }
-        .badge {
-            display: inline-block;
-            background: #e8f5f5;
-            color: #2d8888;
-            border-radius: 20px;
-            padding: 2px 10px;
-            font-size: 0.82rem;
-            font-weight: 600;
-            margin-right: 4px;
-        }
-        .highlight {
-            background: #fff8e1;
-            border-left: 4px solid #ffca28;
-            padding: 12px 16px;
-            border-radius: 0 8px 8px 0;
-            margin: 12px 0;
-            font-size: 0.9rem;
-        }
-        footer {
-            text-align: center;
-            font-size: 0.82rem;
-            color: #999;
-            margin-top: 40px;
-        }
-        a { color: #5AADAD; text-decoration: none; }
-        a:hover { text-decoration: underline; }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>개인정보처리방침 – 내 친구, 베타❤</title>
+<style>
+  :root{
+    --teal-dark:#2d8888;--teal-mid:#5AADAD;--teal-light:#a3d8d8;
+    --teal-bg:#f4f8f8;--teal-pale:#e8f5f5;--radius:12px;
+    --teal-100:#d8f0f0;--teal-200:#b2dede;--teal-500:#5AADAD;
+    --teal-700:#2d8888;--teal-900:#1a5555;
+    --ink:#1a2e2e;--ink-light:#2d5a5a;--muted:#6b7f7f;
+    --border:#b2dede;--bg:#f4f8f8;--card:#ffffff;--accent:#5AADAD;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  body{font-family:'Apple SD Gothic Neo','Malgun Gothic','Noto Sans KR','Segoe UI',Arial,sans-serif;background:var(--teal-bg);color:#333;line-height:1.8;padding:0 0 80px;}
+
+  /* HERO */
+  .hero{background:linear-gradient(160deg,#1a5555 0%,#2d8888 45%,#5AADAD 100%);padding:56px 24px 48px;text-align:center;position:relative;overflow:hidden;}
+  .hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 60% 40% at 20% 30%,rgba(255,255,255,0.06) 0%,transparent 70%),radial-gradient(ellipse 40% 60% at 80% 70%,rgba(90,173,173,0.12) 0%,transparent 70%);pointer-events:none;}
+  .hero-app-name{display:inline-block;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);border-radius:20px;padding:4px 16px;font-size:13px;color:rgba(255,255,255,0.85);letter-spacing:2px;margin-bottom:14px;font-weight:700;}
+  .hero h1{font-size:clamp(22px,5vw,34px);font-weight:700;color:#fff;letter-spacing:1px;margin-bottom:10px;position:relative;}
+  .hero-date{font-size:12px;color:rgba(255,255,255,0.6);letter-spacing:1px;margin-top:4px;}
+  .lang-btn{position:absolute;top:16px;right:16px;background:rgba(255,255,255,0.18);border:1.5px solid rgba(255,255,255,0.6);border-radius:20px;padding:6px 18px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;transition:all 0.2s;white-space:nowrap;z-index:10;}
+  .lang-btn:hover{background:rgba(255,255,255,0.32);}
+
+  /* CONTENT */
+  .content{max-width:820px;margin:0 auto;padding:30px 18px 0;}
+
+  /* TOC */
+  .toc{background:#fff;border-radius:var(--radius);padding:18px 22px;margin-bottom:20px;box-shadow:0 2px 8px rgba(0,0,0,0.06);border-left:4px solid var(--teal-mid);}
+  .toc-title{font-size:13px;font-weight:700;color:var(--teal-dark);margin-bottom:10px;}
+  .toc ol{padding-left:18px;}
+  .toc li{font-size:13px;color:#555;margin-bottom:3px;}
+  .toc a{color:var(--teal-mid);text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+
+  /* SECTION */
+  .section{background:var(--card);border-radius:18px;border:1.5px solid var(--border);margin-bottom:20px;overflow:hidden;box-shadow:0 2px 16px rgba(90,173,173,0.07);padding:0 22px 20px 22px;}
+  .section-header{display:flex;align-items:center;gap:12px;padding:18px 22px;background:linear-gradient(135deg,#f4fbfb,#edf7f7);border-bottom:1.5px solid var(--border);margin:0 -22px 16px -22px;}
+  .section-icon{font-size:20px;line-height:1;}
+  .section h2{font-size:15px;color:var(--teal-700);font-weight:700;}
+  .section p{font-size:14px;color:#444;margin-bottom:10px;line-height:1.8;}
+  .section p:last-child{margin-bottom:0;}
+
+  /* SUB */
+  .sub{background:var(--teal-pale);border-radius:10px;padding:14px 16px;margin:10px 0;}
+  .sub-title{font-size:13px;font-weight:700;color:var(--teal-mid);margin-bottom:7px;}
+  .sub p,.sub li{font-size:13px;color:#444;}
+  .sub ul,.sub ol{padding-left:17px;margin-top:4px;}
+  .sub li{margin-bottom:4px;}
+
+  /* TABLE */
+  .data-table{width:100%;border-collapse:collapse;font-size:13px;margin:10px 0;}
+  .data-table th{background:var(--teal-mid);color:#fff;padding:9px 12px;text-align:left;font-weight:700;}
+  .data-table td{padding:9px 12px;border-bottom:1px solid #e8f5f5;color:#444;vertical-align:top;}
+  .data-table tr:last-child td{border-bottom:none;}
+  .data-table tr:nth-child(even) td{background:#f8fdfd;}
+
+  /* TAGS */
+  .tag{display:inline-block;border-radius:6px;padding:2px 8px;font-size:11px;font-weight:700;margin-right:4px;}
+  .tag.local{background:#e8f5f5;color:#2d8888;}
+  .tag.third{background:#fff3e0;color:#e65100;}
+  .tag.opt{background:#f3f3f3;color:#888;}
+  .tag.req{background:#fce4ec;color:#c62828;}
+
+  /* NOTICE BOX */
+  .notice-box{background:linear-gradient(135deg,#e8f5f5,#f4fbfb);border:2px solid var(--teal-200);border-left:5px solid var(--accent);border-radius:14px;padding:20px 22px;margin-bottom:28px;display:flex;gap:14px;align-items:flex-start;}
+  .notice-box .notice-icon{font-size:28px;flex-shrink:0;margin-top:2px;}
+  .notice-box p{font-size:14px;color:var(--ink-light);line-height:1.75;}
+  .notice-box strong{color:var(--teal-700);font-weight:800;}
+
+  /* HIGHLIGHT BOXES */
+  .box-teal{background:#e8f5f5;border:1.5px solid #a3d8d8;border-radius:10px;padding:13px 16px;font-size:13px;color:#2d8888;font-weight:600;margin:10px 0;display:flex;align-items:flex-start;gap:8px;}
+  .box-orange{background:#fff8e1;border:1.5px solid #ffe082;border-radius:10px;padding:13px 16px;font-size:13px;color:#e65100;margin:10px 0;}
+  .box-blue{background:#e3f2fd;border:1.5px solid #90caf9;border-radius:10px;padding:13px 16px;font-size:13px;color:#1565c0;margin:10px 0;}
+
+  /* CONTACT */
+  .contact-card{background:linear-gradient(135deg,#e8f5f5,#f4fbfb);border:1.5px solid var(--teal-light);border-radius:var(--radius);padding:18px 22px;}
+  .contact-card p{font-size:14px;color:#444;margin-bottom:6px;}
+  .contact-card a{color:var(--teal-mid);text-decoration:none;font-weight:700;}
+
+  a.ext{color:var(--teal-mid);font-weight:700;text-decoration:none;}
+  a.ext:hover{text-decoration:underline;}
+
+  /* LANG TOGGLE */
+  [lang-content="en"]{display:none;}
+  [lang-content="ko"]{display:block;}
+
+  ul.plain{padding-left:18px;font-size:14px;color:#444;margin-top:8px;}
+  ul.plain li{margin-bottom:6px;}
+</style>
 </head>
 <body>
 
-<header>
-    <h1>🐟 내 친구, 베타❤ 개인정보처리방침</h1>
-    <p>패키지명: com.sijin0142.myfriendbetta &nbsp;|&nbsp; 최종 업데이트: 2026년 04월 19일</p>
-</header>
-
-<div class="container">
-
-    <!-- 1. 개요 -->
-    <section>
-        <h2>제1조 개요</h2>
-        <p>
-            <strong>내 친구, 베타❤</strong>는 베타 물고기(Betta splendens)를 사랑하는 분들을 위한
-            개인 기록 관리 앱입니다. 개발자(이하 "운영자")는 사용자의 개인정보를 매우 중요하게
-            여기며, 「개인정보 보호법」 및 관계 법령을 준수합니다.
-        </p>
-        <p>
-            본 방침은 앱 사용 중 수집되는 정보의 항목·이용 목적·보관 기간·제3자 제공 여부·
-            이용자 권리 등을 안내합니다.
-        </p>
-        <div class="highlight">
-            ✅ 본 앱은 <strong>계정 가입·로그인 기능이 없으며</strong>, 사용자가 입력한 데이터는
-            기기 내부에만 저장됩니다. 외부 서버로 개인 데이터가 전송되지 않습니다.
-        </div>
-    </section>
-
-    <!-- 2. 수집 정보 -->
-    <section>
-        <h2>제2조 수집하는 정보 및 목적</h2>
-
-        <h3>① 사용자가 직접 입력하는 정보 (기기 내부 저장)</h3>
-        <table>
-            <thead>
-                <tr><th>수집 항목</th><th>목적</th><th>저장 위치</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>베타 이름, 품종, 입양일, 특징, 구입 샵</td>
-                    <td>베타 개체 정보 등록 및 관리</td>
-                    <td>기기 내부 DB (Room)</td>
-                </tr>
-                <tr>
-                    <td>베타 대표 사진 (갤러리에서 선택)</td>
-                    <td>베타 프로필 이미지 표시</td>
-                    <td>기기 내부 저장소 (filesDir)</td>
-                </tr>
-                <tr>
-                    <td>물갈이 기록 (날짜·시각)</td>
-                    <td>수질 관리 주기 추적 및 알림</td>
-                    <td>기기 내부 DB (Room)</td>
-                </tr>
-                <tr>
-                    <td>먹이 급여 기록 (날짜·시각)</td>
-                    <td>급여 이력 확인</td>
-                    <td>기기 내부 DB (Room)</td>
-                </tr>
-                <tr>
-                    <td>건강 체크 기록 (증상, 진단 결과)</td>
-                    <td>건강 상태 추적</td>
-                    <td>기기 내부 DB (Room)</td>
-                </tr>
-                <tr>
-                    <td>발색 비교 사진</td>
-                    <td>시간별 체색 변화 비교</td>
-                    <td>기기 내부 저장소 (filesDir)</td>
-                </tr>
-                <tr>
-                    <td>수조 이름, 용량, 메모, 사진</td>
-                    <td>수조 정보 등록 및 관리</td>
-                    <td>기기 내부 DB (Room)</td>
-                </tr>
-                <tr>
-                    <td>마지막 한마디 (용궁 보내기)</td>
-                    <td>추모 기록 보관</td>
-                    <td>기기 내부 DB (Room)</td>
-                </tr>
-            </tbody>
-        </table>
-
-        <h3>② 자동으로 수집되는 정보</h3>
-        <table>
-            <thead>
-                <tr><th>수집 항목</th><th>수집 주체</th><th>목적</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>광고 식별자(GAID), 기기 정보, 앱 사용 패턴</td>
-                    <td>Google AdMob</td>
-                    <td>맞춤 광고 제공 및 광고 성과 측정</td>
-                </tr>
-                <tr>
-                    <td>앱 등록 횟수 (SharedPreferences)</td>
-                    <td>앱 내부</td>
-                    <td>전면 광고 노출 주기 관리 (5회당 1회)</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- 3. 권한 -->
-    <section>
-        <h2>제3조 앱 접근 권한</h2>
-        <table>
-            <thead>
-                <tr><th>권한</th><th>용도</th><th>필수 여부</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td><span class="badge">READ_MEDIA_IMAGES</span><br/>
-                        <span class="badge">READ_EXTERNAL_STORAGE</span></td>
-                    <td>갤러리에서 베타·수조 사진 선택</td>
-                    <td>선택 (미허용 시 갤러리 기능 불가)</td>
-                </tr>
-                <tr>
-                    <td><span class="badge">POST_NOTIFICATIONS</span></td>
-                    <td>물갈이 주기 경과 알림 (로컬 푸시)</td>
-                    <td>선택 (미허용 시 알림 미수신)</td>
-                </tr>
-                <tr>
-                    <td><span class="badge">INTERNET</span></td>
-                    <td>Google AdMob 광고 로드</td>
-                    <td>필수 (광고 기반 무료 앱 운영)</td>
-                </tr>
-                <tr>
-                    <td><span class="badge">ACCESS_NETWORK_STATE</span></td>
-                    <td>네트워크 상태 확인 (AdMob 연동)</td>
-                    <td>필수</td>
-                </tr>
-            </tbody>
-        </table>
-        <p style="margin-top:12px;">
-            권한은 Android 설정 &gt; 앱 &gt; 내 친구, 베타❤ &gt; 권한에서 언제든 변경할 수 있습니다.
-        </p>
-    </section>
-
-    <!-- 4. 제3자 제공 -->
-    <section>
-        <h2>제4조 개인정보의 제3자 제공</h2>
-        <p>운영자는 아래의 경우를 제외하고 사용자의 정보를 제3자에게 제공하지 않습니다.</p>
-
-        <h3>Google AdMob (광고 서비스)</h3>
-        <ul>
-            <li>제공 정보: 광고 식별자, 기기 정보, 앱 사용 정보</li>
-            <li>제공 목적: 광고 게재 및 성과 분석</li>
-            <li>보유 기간: Google의 데이터 보유 정책에 따름</li>
-            <li>
-                관련 정책:
-                <a href="https://policies.google.com/privacy" target="_blank">
-                    Google 개인정보처리방침
-                </a>
-                /
-                <a href="https://support.google.com/admob/answer/6128543" target="_blank">
-                    AdMob 정책
-                </a>
-            </li>
-        </ul>
-
-        <div class="highlight">
-            ℹ️ 현재 앱은 <strong>테스트 광고 ID</strong>를 사용 중입니다. 정식 출시 전 실제 AdMob
-            광고 단위 ID로 교체 예정입니다.
-        </div>
-    </section>
-
-    <!-- 5. 보유·이용 기간 -->
-    <section>
-        <h2>제5조 개인정보 보유 및 이용 기간</h2>
-        <table>
-            <thead>
-                <tr><th>데이터 종류</th><th>보유 기간</th><th>삭제 방법</th></tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>베타 정보 및 기록 (DB)</td>
-                    <td>사용자가 삭제하거나 앱 삭제 시까지</td>
-                    <td>앱 내 삭제 기능 또는 앱 제거</td>
-                </tr>
-                <tr>
-                    <td>베타·수조 사진 (filesDir)</td>
-                    <td>베타/수조/사진 삭제 시 또는 앱 삭제 시</td>
-                    <td>앱 내 삭제 기능 또는 앱 제거</td>
-                </tr>
-                <tr>
-                    <td>앱 내 설정 (SharedPreferences)</td>
-                    <td>앱 삭제 또는 데이터 초기화 시까지</td>
-                    <td>Android 앱 데이터 삭제</td>
-                </tr>
-            </tbody>
-        </table>
-    </section>
-
-    <!-- 6. 아동 개인정보 -->
-    <section>
-        <h2>제6조 만 14세 미만 아동의 개인정보 보호</h2>
-        <p>
-            본 앱은 만 14세 미만 아동을 대상으로 개인정보를 의도적으로 수집하지 않습니다.
-            만 14세 미만 아동이 앱을 이용하는 경우, 법정대리인의 동의가 필요합니다.
-            운영자가 만 14세 미만 아동의 정보를 수집한 사실을 알게 된 경우 즉시 삭제합니다.
-        </p>
-    </section>
-
-    <!-- 7. 이용자 권리 -->
-    <section>
-        <h2>제7조 이용자의 권리</h2>
-        <p>사용자는 다음의 권리를 행사할 수 있습니다.</p>
-        <ul>
-            <li><strong>열람권:</strong> 앱 내에 저장된 모든 데이터를 앱 화면을 통해 직접 확인 가능</li>
-            <li><strong>수정권:</strong> 베타 정보 수정 화면을 통해 언제든 수정 가능</li>
-            <li><strong>삭제권:</strong> 베타 삭제·용궁 앨범 삭제·사진 삭제 기능 제공</li>
-            <li><strong>처리 정지권:</strong> 앱 삭제 시 기기 내 모든 데이터 완전 삭제</li>
-            <li>
-                <strong>광고 개인화 거부:</strong> Android 설정 &gt; Google &gt; 광고 &gt;
-                광고 ID 재설정 또는 광고 개인화 사용 중지
-            </li>
-        </ul>
-    </section>
-
-    <!-- 8. 보안 조치 -->
-    <section>
-        <h2>제8조 개인정보 보호 기술적·관리적 조치</h2>
-        <ul>
-            <li>모든 데이터는 기기 내부 저장소(filesDir, Room DB)에 암호화 없이 저장되며,
-                타 앱에서 접근할 수 없는 앱 전용 영역을 사용합니다.</li>
-            <li>외부 서버 전송 없이 100% 로컬 저장으로 네트워크 해킹 위험에서 자유롭습니다.</li>
-            <li>이미지 파일은 압축 처리(JPEG 80% 품질)하여 저장합니다.</li>
-            <li>앱 삭제 시 앱 전용 저장소 내 모든 데이터가 Android OS에 의해 자동 삭제됩니다.</li>
-        </ul>
-    </section>
-
-    <!-- 9. 광고 -->
-    <section>
-        <h2>제9조 광고 서비스 안내</h2>
-        <p>본 앱은 무료 서비스 운영을 위해 Google AdMob을 통한 광고를 제공합니다.</p>
-        <ul>
-            <li><strong>배너 광고:</strong> 각 화면 상단에 표시 (크기: 320×50 Banner)</li>
-            <li><strong>전면 광고:</strong> 베타 등록 5회마다 1회 표시 (InterstitialAd)</li>
-            <li>광고를 통한 수익은 앱 유지 및 개선에 사용됩니다.</li>
-            <li>
-                광고 개인화를 원하지 않으시면 Android 설정 또는
-                <a href="https://adssettings.google.com" target="_blank">Google 광고 설정</a>에서
-                조정할 수 있습니다.
-            </li>
-        </ul>
-    </section>
-
-    <!-- 10. 알림 -->
-    <section>
-        <h2>제10조 알림 (푸시) 서비스</h2>
-        <p>
-            본 앱은 물갈이 기록 후 7일 경과 시 로컬 알림(WorkManager)을 통해 물갈이 주기를
-            안내합니다. 이 알림은 외부 서버와 무관하며 기기 자체에서 발송됩니다.
-        </p>
-        <p>
-            알림 수신을 원하지 않으시면 Android 설정 &gt; 앱 &gt; 내 친구, 베타❤ &gt;
-            알림에서 비활성화할 수 있습니다.
-        </p>
-    </section>
-
-    <!-- 11. 방침 변경 -->
-    <section>
-        <h2>제11조 개인정보처리방침의 변경</h2>
-        <p>
-            본 방침은 관계 법령 또는 서비스 변경에 따라 개정될 수 있습니다.
-            변경 시 앱 업데이트 노트 또는 Google Play 스토어 앱 설명란을 통해 고지합니다.
-            개정 전까지는 현행 방침이 적용됩니다.
-        </p>
-        <ul>
-            <li>최초 작성일: 2026년 04월 19일</li>
-            <li>최종 수정일: 2026년 04월 19일</li>
-        </ul>
-    </section>
-
-    <!-- 12. 문의 -->
-    <section>
-        <h2>제12조 개인정보 보호 담당자 및 문의</h2>
-        <table>
-            <tbody>
-                <tr><td style="width:120px"><strong>앱 명칭</strong></td><td>내 친구, 베타❤</td></tr>
-                <tr><td><strong>패키지명</strong></td><td>com.sijin0142.myfriendbetta</td></tr>
-                <tr><td><strong>개발자</strong></td><td>sijin</td></tr>
-                <tr><td><strong>문의 이메일</strong></td>
-                    <td><a href="mailto:sijin01421@gmail.com">sijin01421@gmail.com</a></td></tr>
-                <tr><td><strong>플랫폼</strong></td>
-                    <td>Google Play 스토어 (Android)</td></tr>
-            </tbody>
-        </table>
-        <p style="margin-top:14px;">
-            개인정보 관련 문의·열람·수정·삭제 요청은 위 이메일로 연락주시면
-            <strong>영업일 기준 3일 이내</strong> 처리해 드립니다.
-        </p>
-    </section>
-
-    <footer>
-        <p>© 2026 sijin · 내 친구, 베타❤ · com.sijin0142.myfriendbetta</p>
-        <p style="margin-top:4px;">본 방침은 대한민국 법령에 따라 작성되었습니다.</p>
-    </footer>
-
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-app-name">내 친구, 베타❤</div>
+  <h1>개인정보처리방침</h1>
+  <div class="hero-date">시행일: 2026년 04월 19일 &nbsp;|&nbsp; 최종 수정: 2026년 04월 19일</div>
 </div>
+
+<div class="content">
+
+<!-- ═══════════════════════════════════════════════
+     ENGLISH VERSION
+═══════════════════════════════════════════════ -->
+<div lang-content="en" class="active">
+
+  <!-- SUMMARY -->
+  <div class="notice-box">
+    <span class="notice-icon">✅</span>
+    <p>
+      <strong>Summary:</strong> This App stores all data <strong>only on your device</strong>.<br>
+      No sign-up or login is required. No personal data is sent to our servers. Your betta records, photos, and tank information never leave your device (except when you voluntarily use the Wi-Fi Transfer feature between your own devices).
+    </p>
+  </div>
+
+  <!-- TOC -->
+  <div class="toc">
+    <div class="toc-title">📑 Table of Contents</div>
+    <ol>
+      <li><a href="#en-1">Overview</a></li>
+      <li><a href="#en-2">Information We Collect</a></li>
+      <li><a href="#en-3">App Permissions</a></li>
+      <li><a href="#en-4">Third-Party Services — Google AdMob</a></li>
+      <li><a href="#en-5">Wi-Fi Device Transfer</a></li>
+      <li><a href="#en-6">Notifications</a></li>
+      <li><a href="#en-7">Data Retention and Deletion</a></li>
+      <li><a href="#en-8">Data Security</a></li>
+      <li><a href="#en-9">Children's Privacy</a></li>
+      <li><a href="#en-10">Your Rights</a></li>
+      <li><a href="#en-11">Changes to This Policy</a></li>
+      <li><a href="#en-12">Contact Us</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. OVERVIEW -->
+  <div class="section" id="en-1">
+    <div class="section-header"><span class="section-icon">📌</span><h2>1. Overview</h2></div>
+    <p>My Friend Betta❤ (package: com.sijin0142.myfriendbetta) is a personal care management app for betta fish lovers, published on the Google Play Store. This Privacy Policy explains in detail how the App handles your information.</p>
+    <p>The App is developed and operated by an individual developer (hereinafter "Developer"). We are committed to transparency regarding data practices and fully comply with applicable privacy laws.</p>
+    <div class="box-teal">
+      <span>🔒</span>
+      <span>The App has <strong>no account system</strong>. All data entered by the user is stored exclusively on the device. No personal data is transmitted to external servers.</span>
+    </div>
+  </div>
+
+  <!-- 2. INFORMATION COLLECTED -->
+  <div class="section" id="en-2">
+    <div class="section-header"><span class="section-icon">📦</span><h2>2. Information We Collect</h2></div>
+    <p>The App collects only information that you directly enter. All data is stored in the device's internal storage (Room database or filesDir) and is never transmitted externally by the App.</p>
+
+    <div class="sub">
+      <div class="sub-title">🐟 Betta Information (user-entered)</div>
+      <table class="data-table">
+        <tr><th>Data Item</th><th>Purpose</th><th>Storage</th></tr>
+        <tr><td>Betta name, species, adoption date, traits, shop name</td><td>Betta profile management</td><td><span class="tag local">Internal DB (Room)</span></td></tr>
+        <tr><td>Betta profile photo (from gallery or camera)</td><td>Display betta profile image</td><td><span class="tag local">filesDir (internal)</span></td></tr>
+        <tr><td>Water change records (date/time)</td><td>Track water quality cycle &amp; send reminders</td><td><span class="tag local">Internal DB (Room)</span></td></tr>
+        <tr><td>Feeding records (date/time)</td><td>Track feeding history</td><td><span class="tag local">Internal DB (Room)</span></td></tr>
+        <tr><td>Cleaning records (date/time)</td><td>Track tank cleaning cycle</td><td><span class="tag local">Internal DB (Room)</span></td></tr>
+        <tr><td>Color comparison photos</td><td>Compare betta color changes over time</td><td><span class="tag local">filesDir (internal)</span></td></tr>
+        <tr><td>Memorial last words (Palace feature)</td><td>Preserve memorial record of deceased betta</td><td><span class="tag local">Internal DB (Room)</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🪣 Tank Information (user-entered)</div>
+      <table class="data-table">
+        <tr><th>Data Item</th><th>Purpose</th><th>Storage</th></tr>
+        <tr><td>Tank name, size, location, memo</td><td>Tank management</td><td><span class="tag local">Internal DB (Room)</span></td></tr>
+        <tr><td>Tank photo (from gallery or camera)</td><td>Display tank profile image</td><td><span class="tag local">filesDir (internal)</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">⚙️ App Settings (automatic)</div>
+      <table class="data-table">
+        <tr><th>Data Item</th><th>Purpose</th><th>Storage</th></tr>
+        <tr><td>Advertising ID (GAID), device info, app usage patterns</td><td>Ad delivery and measurement</td><td><span class="tag third">Google AdMob</span></td></tr>
+        <tr><td>App registration count (SharedPreferences)</td><td>Control interstitial ad frequency (1 per 5 registrations)</td><td><span class="tag local">Internal only</span></td></tr>
+        <tr><td>Water change / cleaning alert cycle settings</td><td>Notification scheduling</td><td><span class="tag local">SharedPreferences</span></td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3. PERMISSIONS -->
+  <div class="section" id="en-3">
+    <div class="section-header"><span class="section-icon">🔑</span><h2>3. App Permissions</h2></div>
+    <table class="data-table">
+      <tr><th>Permission</th><th>Purpose</th><th>Required</th></tr>
+      <tr>
+        <td><code>READ_MEDIA_IMAGES</code><br><code>READ_EXTERNAL_STORAGE</code><br><code>READ_MEDIA_VISUAL_USER_SELECTED</code></td>
+        <td>Select betta / tank photos from gallery</td>
+        <td><span class="tag opt">Optional</span> (gallery feature unavailable if denied)</td>
+      </tr>
+      <tr>
+        <td><code>CAMERA</code></td>
+        <td>Take photos directly with camera for bettas and tanks</td>
+        <td><span class="tag opt">Optional</span> (camera feature unavailable if denied)</td>
+      </tr>
+      <tr>
+        <td><code>POST_NOTIFICATIONS</code></td>
+        <td>Local push notifications for water change and cleaning reminders</td>
+        <td><span class="tag opt">Optional</span> (no alerts if denied)</td>
+      </tr>
+      <tr>
+        <td><code>INTERNET</code></td>
+        <td>Load Google AdMob advertisements</td>
+        <td><span class="tag req">Required</span> (free app operation via ads)</td>
+      </tr>
+      <tr>
+        <td><code>ACCESS_NETWORK_STATE</code></td>
+        <td>Check network connectivity for AdMob</td>
+        <td><span class="tag req">Required</span></td>
+      </tr>
+      <tr>
+        <td><code>WAKE_LOCK</code></td>
+        <td>Keep screen on during Wi-Fi data transfer to prevent interruption</td>
+        <td><span class="tag opt">Optional</span> (only used during transfer)</td>
+      </tr>
+    </table>
+    <p style="margin-top:12px;">You can change permissions at any time via Android Settings &gt; Apps &gt; My Friend Betta❤ &gt; Permissions.</p>
+  </div>
+
+  <!-- 4. ADMOB -->
+  <div class="section" id="en-4">
+    <div class="section-header"><span class="section-icon">📡</span><h2>4. Third-Party Services — Google AdMob</h2></div>
+    <p>The App integrates <strong>Google AdMob</strong> (provided by Google LLC) to display advertisements that support free operation of the App.</p>
+
+    <div class="sub">
+      <div class="sub-title">📊 Data Collected by AdMob</div>
+      <table class="data-table">
+        <tr><th>Data Type</th><th>Description</th><th>How Used by AdMob</th></tr>
+        <tr><td>Advertising ID (GAID)</td><td>Resettable anonymous device identifier assigned by Android</td><td>Frequency capping, conversion tracking, ad personalization</td></tr>
+        <tr><td>Approximate Location</td><td>Country/region inferred from IP address (not GPS)</td><td>Serve geographically relevant ads</td></tr>
+        <tr><td>App Usage Data</td><td>Ad impressions, clicks, interaction time</td><td>Measure ad performance and billing</td></tr>
+        <tr><td>Device Information</td><td>Device model, OS version, screen size, language</td><td>Ensure ad compatibility and rendering</td></tr>
+        <tr><td>Network Information</td><td>IP address, carrier, connection type (Wi-Fi / cellular)</td><td>Ad request routing and network-based targeting</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🔧 Ad Integration in This App</div>
+      <ul>
+        <li><strong>Banner Ads:</strong> Displayed at the top/bottom of each screen (320×50 Banner).</li>
+        <li><strong>Interstitial Ads:</strong> Displayed once per every 5 betta registrations (full-screen, InterstitialAd).</li>
+        <li>Ad revenue is used exclusively for app maintenance and development.</li>
+      </ul>
+    </div>
+
+    <div class="box-orange">
+      <strong>Important:</strong> Google AdMob's data collection and processing is governed entirely by Google's own Privacy Policy. The Developer does not access, receive, or store any data collected by AdMob.
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🛑 Opting Out of Personalized Ads</div>
+      <ul>
+        <li><strong>Android:</strong> Settings → Google → Ads → Delete advertising ID, or enable "Opt out of Ads Personalization"</li>
+        <li><strong>Google Account:</strong> Visit <a href="https://adssettings.google.com" class="ext">adssettings.google.com</a> to manage your ad preferences</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🔗 AdMob / Google References</div>
+      <ul>
+        <li><a href="https://policies.google.com/privacy" class="ext">Google Privacy Policy →</a></li>
+        <li><a href="https://support.google.com/admob/answer/6128543" class="ext">Google AdMob Partner Guidelines →</a></li>
+        <li><a href="https://support.google.com/ads/answer/2662922" class="ext">How to Opt Out of Ad Personalization →</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. WIFI TRANSFER -->
+  <div class="section" id="en-5">
+    <div class="section-header"><span class="section-icon">📶</span><h2>5. Wi-Fi Device Transfer</h2></div>
+    <p>The App provides a <strong>Wi-Fi Transfer</strong> feature that allows you to transfer all your betta data (database + photos) from one device to another on the same Wi-Fi network.</p>
+
+    <div class="sub">
+      <div class="sub-title">🔄 How It Works</div>
+      <ul>
+        <li>The sending device acts as a local HTTP server (NanoHTTPD) and generates a QR code containing a temporary token and the local IP address.</li>
+        <li>The receiving device scans the QR code and downloads the data package directly over the local network.</li>
+        <li>The connection is secured by a one-time session token embedded in the QR code.</li>
+        <li>Data is compressed, checksummed (MD5), and verified before being applied on the receiving device.</li>
+      </ul>
+    </div>
+
+    <div class="box-teal">
+      <span>🔒</span>
+      <span>Data transferred via Wi-Fi is sent directly between your two devices on your local network only. It is <strong>never routed through our servers or any external service</strong>. The temporary local server is closed immediately after the transfer completes or the screen is exited.</span>
+    </div>
+
+    <div class="box-orange">
+      <strong>Warning:</strong> The Wi-Fi Transfer feature replaces ALL data on the receiving device. This action cannot be undone. Please ensure the data being received is correct before confirming.
+    </div>
+  </div>
+
+  <!-- 6. NOTIFICATIONS -->
+  <div class="section" id="en-6">
+    <div class="section-header"><span class="section-icon">🔔</span><h2>6. Notifications</h2></div>
+    <p>The App uses <strong>WorkManager</strong> to schedule local push notifications for water change and cleaning reminders. These notifications are generated entirely on-device and are not sent via any external push service (no FCM, no APNs).</p>
+    <ul class="plain">
+      <li><strong>Water Change Alert:</strong> Sent when the configured number of days has elapsed since the last water change (default: 7 days).</li>
+      <li><strong>Cleaning Alert:</strong> Sent when the configured number of days has elapsed since the last cleaning.</li>
+      <li>Alert cycles can be configured in Settings → Alert Cycle.</li>
+      <li>Notifications can be disabled at any time via Android Settings → Apps → My Friend Betta❤ → Notifications, or by disabling the toggle in the app's Settings screen.</li>
+    </ul>
+    <div class="box-teal">
+      <span>📱</span>
+      <span>All notifications are local and on-device. No external server is involved in sending notifications.</span>
+    </div>
+  </div>
+
+  <!-- 7. RETENTION -->
+  <div class="section" id="en-7">
+    <div class="section-header"><span class="section-icon">💾</span><h2>7. Data Retention and Deletion</h2></div>
+    <table class="data-table">
+      <tr><th>Data Type</th><th>Retention Period</th><th>How to Delete</th></tr>
+      <tr><td>Betta information and records (DB)</td><td>Until user deletes or uninstalls app</td><td>In-app delete feature or app uninstall</td></tr>
+      <tr><td>Betta / tank photos (filesDir)</td><td>Until betta/tank/photo is deleted or app is uninstalled</td><td>In-app delete feature or app uninstall</td></tr>
+      <tr><td>App settings (SharedPreferences)</td><td>Until app uninstall or data reset</td><td>Android Settings → Apps → Clear Data</td></tr>
+    </table>
+    <div class="box-blue" style="margin-top:12px;">
+      <strong>Note on AdMob Data:</strong> Data collected by Google AdMob is managed under Google's data retention policy. To request deletion, use Google's tools at <a href="https://myaccount.google.com/data-and-privacy" class="ext">myaccount.google.com</a>.
+    </div>
+  </div>
+
+  <!-- 8. SECURITY -->
+  <div class="section" id="en-8">
+    <div class="section-header"><span class="section-icon">🔐</span><h2>8. Data Security</h2></div>
+    <ul class="plain">
+      <li>All data is stored in the app's private internal storage (filesDir, Room DB), which is sandboxed and inaccessible to other apps.</li>
+      <li>Data is stored without additional application-level encryption, but is protected by Android's app sandbox. Device-level encryption applies based on your device settings.</li>
+      <li>Images are compressed (JPEG ~80% quality) before saving to reduce storage usage.</li>
+      <li>The temporary Wi-Fi transfer server uses a one-time session token and is immediately shut down after transfer or screen exit.</li>
+      <li>When the app is uninstalled, all app data in private storage is automatically deleted by the Android OS.</li>
+    </ul>
+  </div>
+
+  <!-- 9. CHILDREN -->
+  <div class="section" id="en-9">
+    <div class="section-header"><span class="section-icon">👶</span><h2>9. Children's Privacy</h2></div>
+    <p>The App is not specifically directed at children under 14 years of age. We do not knowingly collect personal information from children under 14. If a child under 14 uses the App, the consent of a legal guardian is required. If we become aware that we have inadvertently collected information from a child under 14, we will take immediate steps to delete it.</p>
+  </div>
+
+  <!-- 10. RIGHTS -->
+  <div class="section" id="en-10">
+    <div class="section-header"><span class="section-icon">⚖️</span><h2>10. Your Rights</h2></div>
+    <p>Since all data is stored locally on your device, you have full control at all times:</p>
+    <table class="data-table">
+      <tr><th>Right</th><th>How to Exercise</th></tr>
+      <tr><td><strong>Right to Access</strong></td><td>All data is visible within the App (betta list, tank list, care records, photo log)</td></tr>
+      <tr><td><strong>Right to Rectification</strong></td><td>Edit any betta or tank information via the Edit Info screen at any time</td></tr>
+      <tr><td><strong>Right to Erasure</strong></td><td>Delete betta records, memorial album entries, photos, and tanks via in-app delete features</td></tr>
+      <tr><td><strong>Right to Restriction</strong></td><td>Uninstall the app to permanently delete all local data</td></tr>
+      <tr><td><strong>Opt Out of Ad Personalization</strong></td><td>Android Settings → Google → Ads → Delete advertising ID (see Section 4)</td></tr>
+    </table>
+    <p style="margin-top:10px;">For any rights requests related to AdMob data collected by Google, please contact Google directly through their <a href="https://myaccount.google.com/data-and-privacy" class="ext">Data &amp; Privacy tools</a>.</p>
+  </div>
+
+  <!-- 11. CHANGES -->
+  <div class="section" id="en-11">
+    <div class="section-header"><span class="section-icon">🔄</span><h2>11. Changes to This Policy</h2></div>
+    <p>This policy may be revised due to changes in app features, legal requirements, or third-party service integrations. When changes are made:</p>
+    <ul class="plain">
+      <li>The "Last Updated" date at the top of this page will be revised.</li>
+      <li>For material changes, we will provide notice through the app's update notes or the Google Play Store listing.</li>
+      <li>Your continued use of the App after changes are posted constitutes acceptance of the revised policy.</li>
+    </ul>
+    <ul class="plain" style="margin-top:8px;">
+      <li>Initial creation: April 19, 2026</li>
+      <li>Last modified: April 19, 2026</li>
+    </ul>
+  </div>
+
+  <!-- 12. CONTACT -->
+  <div class="section" id="en-12">
+    <div class="section-header"><span class="section-icon">✉️</span><h2>12. Contact Us</h2></div>
+    <p>If you have any questions, concerns, or requests regarding this Privacy Policy, please contact us:</p>
+    <div class="contact-card" style="margin-top:12px;">
+      <p>🐟 <strong>App Name:</strong> My Friend Betta❤</p>
+      <p>📦 <strong>Package:</strong> com.sijin0142.myfriendbetta</p>
+      <p>👤 <strong>Developer:</strong> sijin</p>
+      <p>📧 <strong>Email:</strong> <a href="mailto:sijin01421@gmail.com">sijin01421@gmail.com</a></p>
+      <p>🌐 <strong>Platform:</strong> Google Play Store (Android)</p>
+      <p style="margin-top:10px;font-size:12px;color:#888;">We aim to respond to all inquiries within 3 business days.</p>
+    </div>
+  </div>
+
+</div><!-- /en -->
+
+
+<!-- ═══════════════════════════════════════════════
+     한국어 버전
+═══════════════════════════════════════════════ -->
+<div lang-content="ko">
+
+  <!-- 핵심 요약 -->
+  <div class="notice-box">
+    <span class="notice-icon">✅</span>
+    <p>
+      <strong>한 줄 요약:</strong> 본 앱은 모든 데이터를 <strong>기기 내부에만 저장</strong>합니다.<br>
+      회원가입·로그인이 필요 없습니다. 사용자가 입력한 데이터는 외부 서버로 전송되지 않습니다. 베타 기록, 사진, 수조 정보는 기기 밖으로 나가지 않습니다(Wi-Fi 전송 기능으로 본인의 다른 기기에 직접 전달하는 경우 제외).
+    </p>
+  </div>
+
+  <!-- 목차 -->
+  <div class="toc">
+    <div class="toc-title">📑 목차</div>
+    <ol>
+      <li><a href="#ko-1">개요</a></li>
+      <li><a href="#ko-2">수집하는 정보</a></li>
+      <li><a href="#ko-3">앱 접근 권한</a></li>
+      <li><a href="#ko-4">제3자 서비스 — Google AdMob</a></li>
+      <li><a href="#ko-5">Wi-Fi 기기 간 데이터 전송</a></li>
+      <li><a href="#ko-6">알림 서비스</a></li>
+      <li><a href="#ko-7">개인정보 보유 및 삭제</a></li>
+      <li><a href="#ko-8">개인정보 보호 기술적 조치</a></li>
+      <li><a href="#ko-9">아동 개인정보 보호</a></li>
+      <li><a href="#ko-10">이용자의 권리</a></li>
+      <li><a href="#ko-11">개인정보처리방침의 변경</a></li>
+      <li><a href="#ko-12">개인정보 보호 담당자 및 문의</a></li>
+    </ol>
+  </div>
+
+  <!-- 1. 개요 -->
+  <div class="section" id="ko-1">
+    <div class="section-header"><span class="section-icon">📌</span><h2>1. 개요</h2></div>
+    <p><strong>내 친구, 베타❤</strong>(패키지: com.sijin0142.myfriendbetta)는 베타 물고기를 사랑하는 분들을 위한 개인 기록 관리 앱으로, Google Play 스토어를 통해 배포됩니다. 본 개인정보처리방침은 앱 이용 중 정보가 어떻게 처리되는지를 상세히 설명합니다.</p>
+    <p>개발자(이하 "운영자")는 「개인정보 보호법」 및 관계 법령을 준수하며, 사용자의 개인정보를 소중히 여깁니다.</p>
+    <div class="box-teal">
+      <span>🔒</span>
+      <span>본 앱은 <strong>계정 가입·로그인 기능이 없습니다</strong>. 사용자가 입력한 모든 데이터는 기기 내부에만 저장되며, 외부 서버로 개인 데이터가 전송되지 않습니다.</span>
+    </div>
+  </div>
+
+  <!-- 2. 수집 정보 -->
+  <div class="section" id="ko-2">
+    <div class="section-header"><span class="section-icon">📦</span><h2>2. 수집하는 정보</h2></div>
+    <p>앱은 사용자가 직접 입력한 정보만 수집합니다. 모든 데이터는 기기 내부 저장소(Room DB 또는 filesDir)에만 저장되며, 앱에 의해 외부로 전송되지 않습니다.</p>
+
+    <div class="sub">
+      <div class="sub-title">🐟 베타 정보 (사용자 직접 입력)</div>
+      <table class="data-table">
+        <tr><th>수집 항목</th><th>목적</th><th>저장 위치</th></tr>
+        <tr><td>베타 이름, 품종, 입양일, 특징, 구입 샵</td><td>베타 개체 정보 등록 및 관리</td><td><span class="tag local">기기 내부 DB (Room)</span></td></tr>
+        <tr><td>베타 대표 사진 (갤러리 선택 또는 카메라 촬영)</td><td>베타 프로필 이미지 표시</td><td><span class="tag local">filesDir (내부 저장소)</span></td></tr>
+        <tr><td>물갈이 기록 (날짜·시각)</td><td>수질 관리 주기 추적 및 알림</td><td><span class="tag local">기기 내부 DB (Room)</span></td></tr>
+        <tr><td>먹이 급여 기록 (날짜·시각)</td><td>급여 이력 확인</td><td><span class="tag local">기기 내부 DB (Room)</span></td></tr>
+        <tr><td>청소 기록 (날짜·시각)</td><td>수조 청소 주기 추적 및 알림</td><td><span class="tag local">기기 내부 DB (Room)</span></td></tr>
+        <tr><td>발색 비교 사진</td><td>시간별 체색 변화 비교</td><td><span class="tag local">filesDir (내부 저장소)</span></td></tr>
+        <tr><td>마지막 한마디 (용궁 보내기)</td><td>추모 기록 보관</td><td><span class="tag local">기기 내부 DB (Room)</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🪣 수조 정보 (사용자 직접 입력)</div>
+      <table class="data-table">
+        <tr><th>수집 항목</th><th>목적</th><th>저장 위치</th></tr>
+        <tr><td>수조 이름, 용량, 위치, 메모</td><td>수조 정보 등록 및 관리</td><td><span class="tag local">기기 내부 DB (Room)</span></td></tr>
+        <tr><td>수조 사진 (갤러리 선택 또는 카메라 촬영)</td><td>수조 프로필 이미지 표시</td><td><span class="tag local">filesDir (내부 저장소)</span></td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">⚙️ 자동으로 수집되는 정보</div>
+      <table class="data-table">
+        <tr><th>수집 항목</th><th>수집 주체</th><th>목적</th></tr>
+        <tr><td>광고 식별자(GAID), 기기 정보, 앱 사용 패턴</td><td>Google AdMob</td><td>맞춤 광고 제공 및 광고 성과 측정</td></tr>
+        <tr><td>앱 등록 횟수 (SharedPreferences)</td><td>앱 내부</td><td>전면 광고 노출 주기 관리 (5회당 1회)</td></tr>
+        <tr><td>물갈이·청소 알림 주기 설정</td><td>앱 내부</td><td>알림 스케줄링</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- 3. 권한 -->
+  <div class="section" id="ko-3">
+    <div class="section-header"><span class="section-icon">🔑</span><h2>3. 앱 접근 권한</h2></div>
+    <table class="data-table">
+      <tr><th>권한</th><th>용도</th><th>필수 여부</th></tr>
+      <tr>
+        <td><code>READ_MEDIA_IMAGES</code><br><code>READ_EXTERNAL_STORAGE</code><br><code>READ_MEDIA_VISUAL_USER_SELECTED</code></td>
+        <td>갤러리에서 베타·수조 사진 선택</td>
+        <td><span class="tag opt">선택</span> (미허용 시 갤러리 기능 불가)</td>
+      </tr>
+      <tr>
+        <td><code>CAMERA</code></td>
+        <td>카메라로 베타·수조 사진 직접 촬영</td>
+        <td><span class="tag opt">선택</span> (미허용 시 카메라 기능 불가)</td>
+      </tr>
+      <tr>
+        <td><code>POST_NOTIFICATIONS</code></td>
+        <td>물갈이·청소 주기 경과 알림 (로컬 푸시)</td>
+        <td><span class="tag opt">선택</span> (미허용 시 알림 미수신)</td>
+      </tr>
+      <tr>
+        <td><code>INTERNET</code></td>
+        <td>Google AdMob 광고 로드</td>
+        <td><span class="tag req">필수</span> (광고 기반 무료 앱 운영)</td>
+      </tr>
+      <tr>
+        <td><code>ACCESS_NETWORK_STATE</code></td>
+        <td>네트워크 상태 확인 (AdMob 연동)</td>
+        <td><span class="tag req">필수</span></td>
+      </tr>
+      <tr>
+        <td><code>WAKE_LOCK</code></td>
+        <td>Wi-Fi 전송 중 화면 유지 (전송 중단 방지)</td>
+        <td><span class="tag opt">선택</span> (전송 기능 사용 시에만 활성화)</td>
+      </tr>
+    </table>
+    <p style="margin-top:12px;">권한은 Android 설정 &gt; 앱 &gt; 내 친구, 베타❤ &gt; 권한에서 언제든 변경할 수 있습니다.</p>
+  </div>
+
+  <!-- 4. AdMob -->
+  <div class="section" id="ko-4">
+    <div class="section-header"><span class="section-icon">📡</span><h2>4. 제3자 서비스 — Google AdMob</h2></div>
+    <p>본 앱은 무료 서비스 운영을 위해 <strong>Google AdMob</strong>(Google LLC 제공)을 통해 광고를 제공합니다. AdMob은 Google의 자체 개인정보처리방침을 따르는 독립적인 제3자 서비스입니다.</p>
+
+    <div class="sub">
+      <div class="sub-title">📊 AdMob이 수집하는 데이터</div>
+      <table class="data-table">
+        <tr><th>데이터 유형</th><th>설명</th><th>AdMob의 사용 목적</th></tr>
+        <tr><td>광고 ID (GAID)</td><td>Android가 부여하는 재설정 가능한 익명 기기 식별자</td><td>광고 빈도 제한, 전환 추적, 광고 개인화</td></tr>
+        <tr><td>대략적 위치</td><td>IP 주소로 추정되는 국가 또는 지역 (GPS 아님)</td><td>지역에 적합한 광고 제공</td></tr>
+        <tr><td>앱 사용 데이터</td><td>광고 노출, 클릭, 상호작용 시간</td><td>광고 성과 측정 및 과금</td></tr>
+        <tr><td>기기 정보</td><td>기기 모델, OS 버전, 화면 크기, 언어</td><td>광고 호환성 확인 및 렌더링</td></tr>
+        <tr><td>네트워크 정보</td><td>IP 주소, 통신사, 연결 유형 (Wi-Fi/모바일)</td><td>광고 요청 라우팅 및 타게팅</td></tr>
+      </table>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🔧 앱 내 광고 연동 방식</div>
+      <ul>
+        <li><strong>배너 광고:</strong> 각 화면 상단·하단에 표시 (320×50 Banner)</li>
+        <li><strong>전면 광고:</strong> 베타 등록 5회마다 1회 전체 화면 광고 표시 (InterstitialAd)</li>
+        <li>광고 수익은 앱 유지 및 개선에 사용됩니다.</li>
+      </ul>
+    </div>
+
+    <div class="box-orange">
+      <strong>중요:</strong> Google AdMob의 데이터 수집 및 처리는 전적으로 Google의 개인정보처리방침에 따릅니다. 운영자는 AdMob이 수집하는 데이터에 접근하거나 저장하지 않습니다.
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🛑 맞춤 광고 거부 방법</div>
+      <ul>
+        <li><strong>Android 기기:</strong> 설정 → Google → 광고 → 광고 ID 삭제 또는 "광고 개인화 거부" 활성화</li>
+        <li><strong>Google 계정:</strong> <a href="https://adssettings.google.com" class="ext">adssettings.google.com</a>에서 광고 환경설정 관리</li>
+      </ul>
+    </div>
+
+    <div class="sub">
+      <div class="sub-title">🔗 관련 링크</div>
+      <ul>
+        <li><a href="https://policies.google.com/privacy" class="ext">Google 개인정보처리방침 →</a></li>
+        <li><a href="https://support.google.com/admob/answer/6128543" class="ext">Google AdMob 파트너 가이드라인 →</a></li>
+        <li><a href="https://support.google.com/ads/answer/2662922" class="ext">광고 개인화 거부 방법 →</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. WiFi 전송 -->
+  <div class="section" id="ko-5">
+    <div class="section-header"><span class="section-icon">📶</span><h2>5. Wi-Fi 기기 간 데이터 전송</h2></div>
+    <p>앱은 동일한 Wi-Fi 네트워크 내에서 모든 베타 데이터(DB + 사진)를 다른 기기로 전송할 수 있는 <strong>Wi-Fi 전송</strong> 기능을 제공합니다.</p>
+
+    <div class="sub">
+      <div class="sub-title">🔄 동작 방식</div>
+      <ul>
+        <li>보내는 기기가 로컬 HTTP 서버(NanoHTTPD)로 동작하며, 임시 토큰과 로컬 IP 주소가 포함된 QR 코드를 생성합니다.</li>
+        <li>받는 기기는 QR 코드를 스캔하여 로컬 네트워크를 통해 데이터 패키지를 직접 다운로드합니다.</li>
+        <li>연결은 QR 코드에 포함된 일회용 세션 토큰으로 보호됩니다.</li>
+        <li>데이터는 압축 후 MD5 체크섬으로 검증하여 받는 기기에 적용됩니다.</li>
+      </ul>
+    </div>
+
+    <div class="box-teal">
+      <span>🔒</span>
+      <span>Wi-Fi 전송으로 이동하는 데이터는 로컬 네트워크 안에서 두 기기 간에만 직접 전달됩니다. <strong>외부 서버나 제3자 서비스를 경유하지 않습니다.</strong> 임시 로컬 서버는 전송 완료 또는 화면 이탈 즉시 종료됩니다.</span>
+    </div>
+
+    <div class="box-orange">
+      <strong>주의:</strong> Wi-Fi 전송 기능은 받는 기기의 모든 데이터를 덮어씁니다. 이 작업은 취소할 수 없습니다. 최종 적용 전 수신 데이터를 반드시 확인하세요.
+    </div>
+  </div>
+
+  <!-- 6. 알림 -->
+  <div class="section" id="ko-6">
+    <div class="section-header"><span class="section-icon">🔔</span><h2>6. 알림 서비스</h2></div>
+    <p>본 앱은 <strong>WorkManager</strong>를 이용하여 물갈이·청소 주기 알림을 로컬 푸시로 발송합니다. 이 알림은 기기 내부에서만 생성되며, FCM 등 외부 푸시 서비스를 사용하지 않습니다.</p>
+    <ul class="plain">
+      <li><strong>물갈이 알림:</strong> 마지막 물갈이 기록 후 설정된 일수가 경과하면 발송됩니다 (기본값: 7일).</li>
+      <li><strong>청소 알림:</strong> 마지막 청소 기록 후 설정된 일수가 경과하면 발송됩니다.</li>
+      <li>알림 주기는 설정 화면 → 알림 주기에서 변경할 수 있습니다.</li>
+      <li>Android 설정 → 앱 → 내 친구, 베타❤ → 알림에서 언제든 비활성화할 수 있습니다.</li>
+    </ul>
+    <div class="box-teal">
+      <span>📱</span>
+      <span>모든 알림은 로컬에서 기기 자체적으로 발송됩니다. 외부 서버가 관여하지 않습니다.</span>
+    </div>
+  </div>
+
+  <!-- 7. 보유·삭제 -->
+  <div class="section" id="ko-7">
+    <div class="section-header"><span class="section-icon">💾</span><h2>7. 개인정보 보유 및 삭제</h2></div>
+    <table class="data-table">
+      <tr><th>데이터 종류</th><th>보유 기간</th><th>삭제 방법</th></tr>
+      <tr><td>베타 정보 및 기록 (DB)</td><td>사용자가 삭제하거나 앱 삭제 시까지</td><td>앱 내 삭제 기능 또는 앱 제거</td></tr>
+      <tr><td>베타·수조 사진 (filesDir)</td><td>베타/수조/사진 삭제 시 또는 앱 삭제 시</td><td>앱 내 삭제 기능 또는 앱 제거</td></tr>
+      <tr><td>앱 설정 (SharedPreferences)</td><td>앱 삭제 또는 데이터 초기화 시까지</td><td>Android 설정 → 앱 → 데이터 삭제</td></tr>
+    </table>
+    <div class="box-blue" style="margin-top:12px;">
+      <strong>AdMob 데이터 관련:</strong> Google AdMob이 수집한 데이터는 Google의 데이터 보존 정책에 따라 관리됩니다. <a href="https://myaccount.google.com/data-and-privacy" class="ext">myaccount.google.com</a>에서 삭제를 요청할 수 있습니다.
+    </div>
+  </div>
+
+  <!-- 8. 보안 -->
+  <div class="section" id="ko-8">
+    <div class="section-header"><span class="section-icon">🔐</span><h2>8. 개인정보 보호 기술적 조치</h2></div>
+    <ul class="plain">
+      <li>모든 데이터는 앱 전용 내부 저장소(filesDir, Room DB)에 저장되며, 타 앱에서 접근할 수 없는 샌드박스 영역을 사용합니다.</li>
+      <li>데이터는 별도의 애플리케이션 계층 암호화 없이 저장되지만, Android 앱 샌드박스와 기기 레벨 암호화로 보호됩니다.</li>
+      <li>이미지 파일은 압축 처리(JPEG 약 80% 품질)하여 저장합니다.</li>
+      <li>Wi-Fi 전송용 임시 로컬 서버는 일회용 세션 토큰을 사용하며, 전송 완료 또는 화면 이탈 즉시 종료됩니다.</li>
+      <li>앱 삭제 시 앱 전용 저장소 내 모든 데이터가 Android OS에 의해 자동 삭제됩니다.</li>
+    </ul>
+  </div>
+
+  <!-- 9. 아동 -->
+  <div class="section" id="ko-9">
+    <div class="section-header"><span class="section-icon">👶</span><h2>9. 아동 개인정보 보호</h2></div>
+    <p>본 앱은 만 14세 미만 아동을 대상으로 개인정보를 의도적으로 수집하지 않습니다. 만 14세 미만 아동이 앱을 이용하는 경우, 법정대리인의 동의가 필요합니다. 운영자가 만 14세 미만 아동의 정보를 수집한 사실을 알게 된 경우 즉시 삭제합니다.</p>
+  </div>
+
+  <!-- 10. 이용자 권리 -->
+  <div class="section" id="ko-10">
+    <div class="section-header"><span class="section-icon">⚖️</span><h2>10. 이용자의 권리</h2></div>
+    <p>모든 데이터가 기기에 로컬로 저장되므로, 이용자는 언제든지 데이터에 대한 완전한 통제권을 가집니다.</p>
+    <table class="data-table">
+      <tr><th>권리</th><th>행사 방법</th></tr>
+      <tr><td><strong>열람권</strong></td><td>앱 내 베타 목록, 수조 목록, 관리 기록, 사진 로그에서 모든 데이터 확인 가능</td></tr>
+      <tr><td><strong>수정권</strong></td><td>베타·수조 정보 수정 화면을 통해 언제든 수정 가능</td></tr>
+      <tr><td><strong>삭제권</strong></td><td>베타 삭제·용궁 앨범 삭제·사진 삭제·수조 삭제 기능 제공</td></tr>
+      <tr><td><strong>처리 정지권</strong></td><td>앱 삭제 시 기기 내 모든 데이터 완전 삭제</td></tr>
+      <tr><td><strong>광고 개인화 거부권</strong></td><td>Android 설정 → Google → 광고 → 광고 ID 삭제 (4항 참고)</td></tr>
+    </table>
+    <p style="margin-top:10px;">Google이 수집한 AdMob 관련 데이터에 대한 권리 행사는 Google의 <a href="https://myaccount.google.com/data-and-privacy" class="ext">데이터 및 개인정보 보호 도구</a>를 통해 직접 요청하세요.</p>
+  </div>
+
+  <!-- 11. 방침 변경 -->
+  <div class="section" id="ko-11">
+    <div class="section-header"><span class="section-icon">🔄</span><h2>11. 개인정보처리방침의 변경</h2></div>
+    <p>본 방침은 관계 법령 또는 서비스 변경에 따라 개정될 수 있습니다. 변경 시 앱 업데이트 노트 또는 Google Play 스토어 앱 설명란을 통해 고지합니다. 개정 전까지는 현행 방침이 적용됩니다.</p>
+    <ul class="plain">
+      <li>최초 작성일: 2026년 04월 19일</li>
+      <li>최종 수정일: 2026년 04월 19일</li>
+    </ul>
+  </div>
+
+  <!-- 12. 문의 -->
+  <div class="section" id="ko-12">
+    <div class="section-header"><span class="section-icon">✉️</span><h2>12. 개인정보 보호 담당자 및 문의</h2></div>
+    <p>개인정보 관련 문의·열람·수정·삭제 요청은 아래 이메일로 연락주시면 <strong>영업일 기준 3일 이내</strong> 처리해 드립니다.</p>
+    <div class="contact-card" style="margin-top:12px;">
+      <p>🐟 <strong>앱 명칭:</strong> 내 친구, 베타❤</p>
+      <p>📦 <strong>패키지명:</strong> com.sijin0142.myfriendbetta</p>
+      <p>👤 <strong>개발자:</strong> sijin</p>
+      <p>📧 <strong>문의 이메일:</strong> <a href="mailto:sijin01421@gmail.com">sijin01421@gmail.com</a></p>
+      <p>🌐 <strong>플랫폼:</strong> Google Play 스토어 (Android)</p>
+    </div>
+  </div>
+
+</div><!-- /ko -->
+
+</div><!-- /content -->
+
 </body>
 </html>
